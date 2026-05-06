@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+  ================================================================
+  RS Treinamento & Consultoria — Sistema Escolar ADS
+  Arquivo : usuario.html
+  Função  : Tela de cadastro de novo usuário.
+
+  Dependências externas:
+    css/style.css  → todo o visual
+    js/app.js      → lógica (função cadastrar())
+
+  Este arquivo contém APENAS a estrutura HTML da tela.
+
+  Fluxo desta tela:
+    1. Aluno preenche nome, login e senha
+    2. Clica em "Criar conta"
+    3. app.js valida e salva no localStorage
+    4. Redireciona para login.html após 2 segundos
+  ================================================================
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RS Treinamento — Cadastro de Usuário</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Mesma folha de estilos do login.html: visual consistente -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="card">
+
+    <!--
+      Hero horizontal (.hero-row): logo + texto lado a lado.
+      Diferente do login.html que usa .hero (centralizado).
+      Os dois estilos estão definidos em css/style.css.
+    -->
+    <div class="hero-row">
+      <div class="hero-logo">RS</div>
+      <div class="hero-text">
+        <h1>RS Treinamento</h1>
+        <p>ADS · Desenvolvimento de Sistemas</p>
+      </div>
+    </div>
+
+    <!-- Formulário de cadastro -->
+    <div class="body">
+
+      <div class="form-title">Cadastro de usuário</div>
+      <div class="form-sub">Cria seu acesso ao sistema</div>
+
+      <!-- Caixa de erro (vermelha) — começa invisível -->
+      <div class="alert-err" id="erro"></div>
+
+      <!--
+        Caixa de sucesso (verde) — começa invisível.
+        Aparece após o cadastro ser salvo com sucesso.
+      -->
+      <div class="alert-ok" id="sucesso">
+        ✓ Usuário cadastrado! Redirecionando para o login…
+      </div>
+
+      <!-- Campo: Nome completo -->
+      <div class="field">
+        <label class="label">Nome completo <span class="req">*</span></label>
+        <input class="input" id="inp-nome" type="text" placeholder="ex: João Silva">
+      </div>
+
+      <!-- Campo: Login -->
+      <div class="field">
+        <label class="label">Login <span class="req">*</span></label>
+        <!--
+          autocomplete="off" → evita que o navegador preencha
+          automaticamente com senhas salvas nesta tela de cadastro
+        -->
+        <input class="input" id="inp-login" type="text"
+               placeholder="ex: joao.silva" autocomplete="off">
+        <div class="hint">* Este será seu usuário na tela de login</div>
+      </div>
+
+      <!-- Campo: Senha -->
+      <div class="field">
+        <label class="label">Senha <span class="req">*</span></label>
+        <input class="input" id="inp-senha" type="password"
+               placeholder="mínimo 3 caracteres">
+        <div class="hint">* Guarde sua senha, ela não pode ser recuperada</div>
+      </div>
+
+      <!-- Botão principal: chama cadastrar() definida em app.js -->
+      <button class="btn" onclick="cadastrar()">Criar conta</button>
+
+      <!-- Linha visual separadora -->
+      <hr class="divider">
+
+      <!-- Botão secundário: volta para o login sem cadastrar -->
+      <button class="btn-outline" onclick="window.location.href='login.html'">
+        ← Voltar ao login
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Script no final do body (mesmo motivo explicado no login.html) -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>

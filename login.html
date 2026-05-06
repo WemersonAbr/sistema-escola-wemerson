@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+  ================================================================
+  RS Treinamento & Consultoria — Sistema Escolar ADS
+  Arquivo : login.html
+  Função  : Tela de entrada do sistema.
+
+  Dependências externas:
+    css/style.css  → todo o visual (cores, fontes, componentes)
+    js/app.js      → toda a lógica (funções fazerLogin, cancelar...)
+
+  Este arquivo contém APENAS a estrutura HTML da tela.
+  ================================================================
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RS Treinamento — Login</title>
+
+  <!-- Fontes do Google: carregadas antes do CSS para não piscar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <!--
+    Folha de estilos externa.
+    href="css/style.css" → caminho relativo a partir deste arquivo.
+    Como login.html está na raiz e style.css está em css/,
+    o caminho é: css/style.css
+  -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cartão central que envolve toda a tela -->
+  <div class="card">
+
+    <!-- Hero: faixa vermelha com logo e nome do sistema -->
+    <div class="hero">
+      <div class="hero-logo">RS</div>
+      <h1>RS Treinamento<br>&amp; Consultoria</h1>
+      <p>ADS · Desenvolvimento de Sistemas</p>
+    </div>
+
+    <!-- Área do formulário -->
+    <div class="body">
+
+      <div class="form-title">Entrar no sistema</div>
+      <div class="form-sub">Use suas credenciais cadastradas</div>
+
+      <!--
+        Caixa de erro: começa invisível via CSS (display:none em .alert-err)
+        A função mostrarErro() em app.js altera para display:block
+      -->
+      <div class="alert-err" id="erro"></div>
+
+      <!-- Campo: Login -->
+      <div class="field">
+        <label class="label">Login <span class="req">*</span></label>
+        <!--
+          id="inp-login" → o app.js encontra este campo pelo id
+          para ler o que o usuário digitou
+        -->
+        <input class="input" id="inp-login" type="text" placeholder="ex: adm">
+      </div>
+
+      <!-- Campo: Senha -->
+      <div class="field">
+        <label class="label">Senha <span class="req">*</span></label>
+        <!--
+          type="password" → exibe os caracteres como pontos (••••)
+        -->
+        <input class="input" id="inp-senha" type="password" placeholder="ex: 123">
+      </div>
+
+      <!--
+        Dois botões lado a lado usando a classe .btn-row do CSS.
+        onclick chama funções definidas em js/app.js.
+      -->
+      <div class="btn-row">
+        <button class="btn" onclick="fazerLogin()">Entrar</button>
+        <button class="btn-outline" onclick="cancelarLogin()">Cancelar</button>
+      </div>
+
+      <!-- Link para criar nova conta -->
+      <div class="text-center">
+        Não tem conta?
+        <span class="link" onclick="window.location.href='usuario.html'">
+          Cadastrar usuário
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!--
+    Script externo: SEMPRE no final do body (boa prática).
+    Motivo: o HTML precisa existir antes do JS rodar,
+    porque o JS busca elementos pelo id (getElementById).
+    Se o script fosse no <head>, os elementos ainda não existiriam.
+  -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>

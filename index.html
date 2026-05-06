@@ -1,14 +1,47 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<!--
+  ================================================================
+  RS Treinamento & Consultoria — Sistema Escolar ADS
+  Arquivo : index.html
+  Função  : Ponto de entrada do sistema.
+            Redireciona automaticamente para login.html.
+
+  Por que este arquivo existe?
+    Quando alguém acessa a URL raiz do projeto (ex: no Netlify),
+    o servidor procura um arquivo chamado index.html por padrão.
+    Este arquivo garante que o usuário seja enviado para o login.
+
+  O redirecionamento acontece de duas formas:
+    1. Via <meta http-equiv> → redireciona em 0 segundos pelo HTML
+    2. Via JavaScript        → garante o redirecionamento mesmo se
+                               o meta tag não funcionar
+  ================================================================
+-->
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Mobile Acadêmico</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RS Treinamento — Sistema Escolar</title>
+
+  <!--
+    Redirecionamento HTML:
+    content="0" → aguarda 0 segundos antes de redirecionar
+    url=         → destino do redirecionamento
+  -->
+  <meta http-equiv="refresh" content="0; url=login.html">
 </head>
 <body>
-    <h1>Projeto Sistema Escolar Mobile</h1>
-    <p>Projeto desenvolvido na disciplina de Desenvolvimento Mobile.</p>
-    <script src="js/script.js"></script>  
+
+  <!-- Mensagem exibida caso o redirecionamento demore -->
+  <p>Redirecionando para o login...</p>
+
+  <!--
+    Redirecionamento JavaScript como segurança extra.
+    Caso o meta tag acima não funcione, o JS garante o redirect.
+  -->
+  <script>
+    window.location.href = 'login.html';
+  </script>
+
 </body>
 </html>
